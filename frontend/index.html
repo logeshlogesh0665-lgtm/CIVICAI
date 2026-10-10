@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CivicAI — National Welfare Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="gov-header">
+      <div class="gov-badge" id="portalName"></div>
+      <h1 id="headTitle"></h1>
+      <p id="headSub"></p>
+    </header>
+
+    <div class="toolbar">
+      <label class="field inline">
+        <span>🌐 Language / மொழி</span>
+        <select id="langSelect">
+          <option>English</option><option>Tamil</option><option>Hindi</option>
+        </select>
+      </label>
+      <label class="toggle"><input type="checkbox" id="readToggle"> <span id="readLbl"></span></label>
+      <button id="logoutBtn" class="btn btn-ghost" hidden></button>
+    </div>
+
+    <!-- View 1: profile form -->
+    <section id="viewForm" class="view">
+      <h2 class="section-title" id="sec1"></h2>
+      <div class="grid">
+        <label class="field"><span id="lblName"></span><input id="name" type="text" autocomplete="name"></label>
+        <label class="field"><span id="lblPhone"></span><input id="phone" type="tel" inputmode="numeric" maxlength="10"></label>
+      </div>
+
+      <h2 class="section-title" id="sec2"></h2>
+      <div class="grid">
+        <label class="field"><span id="lblAge"></span><input id="age" type="number" min="14" max="60" placeholder="20"></label>
+        <label class="field"><span id="lblGender"></span><select id="gender"></select></label>
+        <label class="field"><span id="lblSchool"></span><select id="school"></select></label>
+        <label class="field"><span id="lblCourse"></span><select id="course"></select></label>
+        <label class="field"><span id="lblIncome"></span><select id="income"></select></label>
+        <label class="field"><span id="lblMarks"></span><select id="marks"></select></label>
+      </div>
+
+      <p id="formMsg" class="msg warn" role="alert" hidden></p>
+      <div class="actions">
+        <button id="submitBtn" class="btn"></button>
+      </div>
+    </section>
+
+    <!-- View 2: dashboard -->
+    <section id="viewDash" class="view" hidden>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="schemes" role="tab" id="tabSchemes"></button>
+        <button class="tab" data-tab="help" role="tab" id="tabHelp"></button>
+      </div>
+
+      <div id="paneSchemes">
+        <h2 class="section-title" id="schemesHead"></h2>
+        <div id="schemeList"></div>
+      </div>
+
+      <div id="paneHelp" hidden>
+        <h2 class="section-title" id="helpHead"></h2>
+        <div class="help-row">
+          <input id="query" type="text" aria-label="Question">
+          <button id="askBtn" class="btn"></button>
+        </div>
+        <p id="helpOut" class="msg" hidden></p>
+      </div>
+    </section>
+
+    <!-- View 3: scheme detail -->
+    <section id="viewDetail" class="view" hidden></section>
+  </main>
+  <button id="agentFab" class="fab" aria-expanded="false"></button>
+  <aside id="agent" class="agent" hidden aria-label="Civic Guide">
+    <div class="agent-head"><strong id="agentTitle"></strong><button id="agentClose" class="icon" aria-label="Close">✕</button></div>
+    <div id="agentLog" class="agent-log" aria-live="polite"></div>
+    <div class="agent-actions"><button class="btn" id="agentFill"></button><button class="btn btn-ghost" id="agentTalk"></button></div>
+    <div class="agent-input"><input id="agentInput" type="text" aria-label="Message"><button class="btn" id="agentSend" aria-label="Send">➤</button></div>
+  </aside>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/voice.js"></script>
+</body>
+</html>
